@@ -59,7 +59,7 @@ services:
     volumes:
       - mariadbdata:/bitnami
     container_name: phpMyadmin_${MYSQL_VERSION}     
-  composer_api_admin:
+  composer_api:
       image: composer:1.9
       command: ["composer", "install"]
       volumes:
