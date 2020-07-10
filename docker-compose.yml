@@ -11,7 +11,7 @@ services:
       - ./php/php.ini:/usr/local/etc/php/conf.d/custom.ini
       - ${PROJECT_ROOT}/:/var/www/html/
       - ${STORAGE}:/home/storage/
-    container_name: php_${PHP_VERSION}
+    container_name: php_li_${PHP_VERSION}
   apache:
     restart: always
     env_file:
@@ -29,7 +29,7 @@ services:
     volumes:
       - ${PROJECT_ROOT}/:/var/www/html/
       - ${STORAGE}:/home/storage/
-    container_name: apache_${APACHE_VERSION}
+    container_name: apache_li_${APACHE_VERSION}
   mariadb:
     env_file:
       - .env
@@ -47,7 +47,7 @@ services:
     environment:      
       - MARIADB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
       - BITNAMI_DEBUG="true"      
-    container_name: mariadb_${MYSQL_VERSION}
+    container_name: mariadb_li_${MYSQL_VERSION}
   phpmyadmin:
     restart: always
     image: 'bitnami/phpmyadmin:4'
@@ -58,7 +58,7 @@ services:
       - mariadb
     volumes:
       - mariadbdata:/bitnami
-    container_name: phpMyadmin_${MYSQL_VERSION}     
+    container_name: phpMyadmin_li_${MYSQL_VERSION}     
   composer_api:
       image: composer:1.9
       command: ["composer", "install"]
